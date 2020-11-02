@@ -14,15 +14,14 @@ const User = require('../src/models/user');
 //   });
 
 const updateAgeAndCount = async (id, age) => {
-  const user = await User.findByIdAndUpdate(id, { age: age });
-  const count = await User.countDocuments({ age: age });
-  return user, count;
+  const user = await User.findByIdAndUpdate(id, { age });
+  const count = await User.countDocuments({ age });
+  return [user, count];
 };
 
-updateAgeAndCount('5f997881051b075e6cad16c7', 4)
-  .then((user, count) => {
-    console.log(user);
-    console.log(count);
+updateAgeAndCount('5f997881051b075e6cad16c7', 0)
+  .then((result) => {
+    console.log(result);
   })
   .catch((e) => {
     console.log(e);
